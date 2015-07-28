@@ -1,0 +1,1 @@
+-- get information using endoresments join table
