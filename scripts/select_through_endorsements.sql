@@ -1,1 +1,1 @@
--- get information using endoresments join table
+-- get information using endorsements join table

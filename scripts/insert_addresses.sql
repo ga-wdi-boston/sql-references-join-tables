@@ -1,1 +1,1 @@
--- insert addresses connecting people and places
+-- insert addresses connecting people and cities

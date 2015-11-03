@@ -1,1 +1,1 @@
--- create jobs connecting developers and companies
+-- create jobs connecting people and companies

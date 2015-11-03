@@ -1,1 +1,1 @@
--- create endorsements connecting developers and skills
+-- create endorsements connecting people and skills
