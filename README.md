@@ -95,40 +95,66 @@ sql-join-tables=#
 
 ---
 
-## Join tables
+## Join Tables
 
 ### Demonstration
 
-First we'll create an `addresses` table to connect `people` to `cities`.
+We had `addresses`, `people`, and `cities` tables in the previous lesson -
+ one city was tied to many addresses, and each address was tied to one
+ (or potentially more) people.
 
-Then we'll insert `addresses` connecting a few `people` to some `cities`.
+In this lesson, `people` and `cities` will be the same;
+however, now `addresses` will represent the link between a person and a city.
 
-Last we'll build and run some queries using the `addresses` join table.
+The first step is creating `people` and `cities` just like we did before.
+Next, we create a new `addresses` table -
+this time, though, with two columns of foreign keys.
 
-### Code Along
+**addresses**
 
-We'll create a `skills` table and fill it with data from `data/skills.csv`.
-Then we'll create an `endorsements` table to connect `people` to `skills`.
+| id | people_id | city_id |  no | street |
+|:--:|:---------:|:-------:|:---:|:------:|
+|  1 |         5 |      4  | 440 | 10th   |
+|  1 |         7 |      2  | 991 | 11th   |
+|  1 |         9 |      2  | 406 | 12th   |
+|  1 |         5 |      7  | 143 | 13th   |
+|  1 |         5 |      7  | 647 | 1st    |
 
-Next we'll insert `endorsements` connecting `people` to `skills`.
+New records can be inserted directly into the `addresses` table,
+ linking together People and Cities.
+These tables can all be queried using INNER JOIN or using nested SQL queries,
+ much like in the previous examples.
 
-Last we'll build and run some queries using the `endorsements` join table.
+### Code Along : Join Tables
 
-### Practice
+You're all familiar with LinkedIn -
+let's imagine how a skill endorsement system like LinkedIn's might work.
+
+First, let's create a `skills` table
+and fill it with data from `data/skills.csv`.
+
+Then we'll create an `endorsements` table to connect `skills`
+to the existing `people` table.
+
+Next we'll insert a few `endorsements` connecting `people` to `skills`.
+
+Lastly, we'll build and run some queries using the `endorsements` join table.
+
+### Lab : Join Tables
 
 Create a `companies` table and fill it with data from `data/companies.csv`.
-Then, create a `jobs` table to connect `people` to `companies`.
-The `jobs` table should contain `start_date` and `end_date` columns.
+Then make a `jobs` table to connect `companies` to the existing `people` table;
+ the `jobs` table should contain `start_date` and `end_date` columns
+ in addition to linking People to Companies.
 
-Next we'll insert `jobs` connecting `people` to `companies`.
-Give at least two people non-overlapping jobs at more than one company.
-Have at least two companies employ at least four people.
+Next insert some new `jobs` connecting `people` to `companies`.
 
-Last we'll build and run some queries using the `jobs` join table.
-For at least one company find all the people who currently work there.
-For at least one person find all of the companies they've worked for
+-   Give at least two people non-overlapping jobs at more than one company.
+-   Have at least two companies employ at least four people.
+
+Lastly, run some queries using the `jobs` join table:
+
+-   For at least one company find all the people who currently work there.
+
+-   For at least one person find all of the companies they've worked for
  and order the result by start date.
-
----
-
-## Assessment
