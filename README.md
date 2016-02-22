@@ -1,6 +1,6 @@
 ![General Assembly Logo](http://i.imgur.com/ke8USTq.png)
 
-# An introduction to many-to-many relationships in PostgreSQL
+# Many-to-Many Relationships in PostgreSQL
 
 ## Instructions
 
@@ -18,21 +18,53 @@ By the end of this lesson, students should be able to:
 
 -   [An Introduction to PostgreSQL Foreign Keys](https://github.com/ga-wdi-boston/sql-references-join)
 
-## Introduction
+## Handling More Complex Data Relationships
 
 There are a variety of relationships that cannot be easily captured
- by a simple reference from one table to another.
-We'll explore how to represent many-to-many relationships using join tables
- to represent that relationship.
+ by the simple one-to-many relationships we've looked at so far.
+Suppose you were making an application for planning and attending events.
+Presumably, event will generally have more than one person attending.
+But one person might also attend multuple events.
+This is an example of a many to many relationship.
 
-Join tables contain two foreign keys defining a bi-directional relationship
- between two other tables.
-Each row in the join table relates one row in the left table
- with one row in the right table (left and right are arbitrary).
-The same left row reference may appear with many different right row references
+The way most many-to-many relationships are represented is using _join tables_.
+A join table is a table, containing two sets of foreign keys,
+that defines a bi-directional relationship between the two other tables
+that those foreign keys refer to.
+Each row in the join table relates one row in the 'left' table
+ with one row in the 'right' table (left and right are arbitrary).
+The same 'left' reference may appear with many different 'right' references
  and vice versa.
-A join table usually contains additional columns to hold more detail
- about the relationship.
+
+In the example above, we might have a `people` table and an `events` table.
+A join table would create a cross-reference between these two tables,
+with each row linking one person to one event.
+
+**people_events**
+
+| id | people_id | event_id |
+|:--:|:---------:|:--------:|
+|  1 |         5 |       4  |
+|  1 |         7 |       4  |
+|  1 |         9 |       4  |
+|  1 |         5 |       4  |
+|  1 |         5 |       4  |
+
+It's usually helpful to model these joins
+ as their own entities, where possible,
+ since that will give your table a more semantic name.
+In doing so, you will also commonly find yourself adding additional columns
+ to the table to represent other properties of the entities.
+
+**attendances**
+
+| id | people_id | event_id | other_data |
+|:--:|:---------:|:--------:|:----------:|
+|  1 |         5 |       4  |    ...     |
+|  1 |         7 |       4  |    ...     |
+|  1 |         9 |       4  |    ...     |
+|  1 |         5 |       4  |    ...     |
+|  1 |         5 |       4  |    ...     |
 
 ## Setup
 
