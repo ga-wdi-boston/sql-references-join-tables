@@ -1,0 +1,1 @@
+\copy addresses(no,name) from 'data/addresses.csv' with(header true, format csv)
