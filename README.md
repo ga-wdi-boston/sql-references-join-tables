@@ -72,7 +72,6 @@ In doing so, you will also commonly find yourself adding additional columns
 
 We'll use `sql-join-tables` as the working database.
 Just as we did in the previous lesson, we'll create it using **[CREATE DATABASE](http://www.postgresql.org/docs/9.4/static/sql-createdatabase.html)**
-with `sql-crud` specified as the `TEMPLATE`.
 
 **bash**
 
@@ -86,7 +85,7 @@ psql
 psql (9.4.5)
 Type "help" for help.
 
-wdi=# CREATE DATABASE "sql-join-tables" TEMPLATE "sql-crud";
+wdi=# CREATE DATABASE "sql-join-tables";
 CREATE DATABASE
 wdi=# \c sql-join-tables
 You are now connected to database "sql-join-tables" as user "wdi".
