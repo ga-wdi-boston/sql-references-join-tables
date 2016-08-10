@@ -1,1 +1,0 @@
--- get information using endorsements join table

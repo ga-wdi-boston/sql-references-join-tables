@@ -1,1 +1,0 @@
--- get information using addresses join table

@@ -1,1 +1,0 @@
--- insert endorsements connecting people and skills
