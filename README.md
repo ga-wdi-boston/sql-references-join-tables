@@ -1,159 +1,109 @@
-![General Assembly Logo](http://i.imgur.com/ke8USTq.png)
+[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
 
-# Many-to-Many Relationships in PostgreSQL
+# An Introduction to many-to-many relationships in PostgreSQL
 
-## Instructions
+## Prerequisites
 
-Fork and clone this repository.
+-   [An Introduction to PostgreSQL Foreign Key References](https://github.com/ga-wdi-boston/sql-references-join)
 
 ## Objectives
 
-By the end of this lesson, students should be able to:
+By the end of this, developers should be able to:
 
+-   Create tables with foreign key references.
 -   Create join tables to represent many-to-many relationships.
 -   Insert rows in join tables to create many-to-many relationships.
 -   Select data about many-to-many relationships using join tables.
 
-## Prerequisites
+## Preparation
 
--   [An Introduction to PostgreSQL Foreign Keys](https://github.com/ga-wdi-boston/sql-references-join)
+1.  [Fork and clone](https://github.com/ga-wdi-boston/meta/wiki/ForkAndClone)
+ this repository.
+1.  Create a new branch, `training`, for your work.
+1.  Install dependencies if necessary.
 
-## Handling More Complex Data Relationships
+## Modeling relationships
 
-There are a variety of relationships that cannot be easily captured
- by the simple one-to-many relationships we've looked at so far.
-Suppose you were making an application for planning and attending events.
-Presumably, event will generally have more than one person attending.
-But one person might also attend multuple events.
-This is an example of a many to many relationship.
+Our library has books and authors, but it won't be much of a library without
+borrowers.  Our clinic has patients and doctors, but how do we schedule
+appointments? Our cookbook has ingredients and recipes, but only allows a
+particular ingredient in a single recipe.
 
-The way most many-to-many relationships are represented is using _join tables_.
-A join table is a table, containing two sets of foreign keys,
-that defines a bi-directional relationship between the two other tables
-that those foreign keys refer to.
-Each row in the join table relates one row in the 'left' table
- with one row in the 'right' table (left and right are arbitrary).
-The same 'left' reference may appear with many different 'right' references
- and vice versa.
+-   In our library, how do we connect `borrowers` to `books`.
+-   How should clinic administrators record appointments?
+-   And what does our cookbook need that includes ingredients?
 
-In the example above, we might have a `people` table and an `events` table.
-A join table would create a cross-reference between these two tables,
-with each row linking one person to one event.
+Let's model these new entities (objects) and their relationships to our
+existing entities (objects).
 
-**people_events**
+## Creating many-to-many relationships between entities
 
-| id | people_id | event_id |
-|:--:|:---------:|:--------:|
-|  1 |         5 |       4  |
-|  1 |         7 |       4  |
-|  1 |         9 |       4  |
-|  1 |         5 |       4  |
-|  1 |         5 |       4  |
+In an RDBMs, we do this using oin tables
 
-It's usually helpful to model these joins
- as their own entities, where possible,
- since that will give your table a more semantic name.
-In doing so, you will also commonly find yourself adding additional columns
- to the table to represent other properties of the entities.
+### Demonstration: Create tables for borrowers and loans
 
-**attendances**
+We'll create SQL scripts in `scripts/library` to add a `borrowers` table and
+populate it from data in the `patients` table (since we only need a subset of
+the columns from `data/people.csv`).
 
-| id | people_id | event_id | other_data |
-|:--:|:---------:|:--------:|:----------:|
-|  1 |         5 |       4  |    ...     |
-|  1 |         7 |       4  |    ...     |
-|  1 |         9 |       4  |    ...     |
-|  1 |         5 |       4  |    ...     |
-|  1 |         5 |       4  |    ...     |
+Then we'll create a `loans` table and populate it using `INSERT` statements.
 
-## Setup
+### Code along: Create and populate an appointments table
 
-### Code Along : Create a Database
+We'll create scripts in `scripts/clinic` to add an `appointments` table and
+populate it using `INSERT` statements.
 
-We'll use `sql-join-tables` as the working database.
-Just as we did in the previous lesson, we'll create it using **[CREATE DATABASE](http://www.postgresql.org/docs/9.4/static/sql-createdatabase.html)**
+### Lab: Create and populate a recipes table
 
-**bash**
+We'll create scripts in `scripts/cookbook` to add a `recipe_ingredients` table
+and populate it using `INSERT` statements.  Then we'll remove `recipe_id` from
+`ingredients`.
 
-```bash
-psql
-```
+## Retrieving data using join tables
 
-**psql**
+### Demonstration: Retrieve information about library loans
 
-```sql
-psql (9.4.5)
-Type "help" for help.
+We'll create scripts in `scripts/library` to retrieve information about
+borrowers, loans, and books.
 
-wdi=# CREATE DATABASE "sql-join-tables";
-CREATE DATABASE
-wdi=# \c sql-join-tables
-You are now connected to database "sql-join-tables" as user "wdi".
-sql-join-tables=#
-```
+What happens if we try to `DELETE` a borrower or a book?
 
----
+### Code along: Retrieve information about appointments
 
-## Join Tables
+We'll create scripts in `scripts/clinic` to retrieve information about patients,
+doctors and appointments.
 
-### Demonstration
+### Lab: Retrieve information about recipe ingredients
 
-We had `addresses`, `people`, and `cities` tables in the previous lesson -
- one city was tied to many addresses, and each address was tied to one
- (or potentially more) people.
+We'll create scripts in `scripts/cookbook` to retrieve information about
+recipes.
 
-In this lesson, `people` and `cities` will be the same;
-however, now `addresses` will represent the link between a person and a city.
+## Additional Resources
 
-The first step is creating `people` and `cities` just like we did before.
-Next, we create a new `addresses` table -
-this time, though, with two columns of foreign keys.
+-   [Constraints](http://www.postgresql.org/docs/9.4/static/ddl-constraints.html) -
+ An overview of the variety of constraints that PostgreSQL provides.
+-   [CREATE TABLE](http://www.postgresql.org/docs/9.4/static/sql-createtable.html) -
+ detailed documentation of PostgreSQL's version of
+ the SQL `CREATE TABLE` command.
+-   [ALTER TABLE](http://www.postgresql.org/docs/9.4/static/sql-altertable.html) -
+ detailed documentation of PostgreSQL's version of the
+ SQL `ALTER TABLE` command.
+-   [Index Introduction](http://www.postgresql.org/docs/9.4/static/indexes-intro.html) -
+ The introductory section of the chapter on indexes in PostgreSQL.
+-   [CREATE INDEX](http://www.postgresql.org/docs/9.4/static/sql-createindex.html) -
+ detailed documentation of PostgreSQL's version of the
+  SQL `CREATE INDEX` command.
+-   [UPDATE](http://www.postgresql.org/docs/9.4/static/sql-update.html) -
+ detailed documentation of PostgreSQL's version of the SQL `UPDATE` command.
+-   [INSERT](http://www.postgresql.org/docs/9.4/static/sql-insert.html) -
+ detailed documentation of PostgreSQL's version of the
+  SQL `INSERT INTO` command.
+-   [Joins Between Tables](http://www.postgresql.org/docs/9.4/static/tutorial-join.html) -
+ An introduction to querying multiple tables
+-   [SELECT](http://www.postgresql.org/docs/9.4/static/sql-select.html) -
+ detailed documentation of PostgreSQL's version of the SQL `SELECT` command.
 
-**addresses**
+## [License](LICENSE)
 
-| id | people_id | city_id |  no | street |
-|:--:|:---------:|:-------:|:---:|:------:|
-|  1 |         5 |      4  | 440 | 10th   |
-|  1 |         7 |      2  | 991 | 11th   |
-|  1 |         9 |      2  | 406 | 12th   |
-|  1 |         5 |      7  | 143 | 13th   |
-|  1 |         5 |      7  | 647 | 1st    |
-
-New records can be inserted directly into the `addresses` table,
- linking together People and Cities.
-These tables can all be queried using INNER JOIN or using nested SQL queries,
- much like in the previous examples.
-
-### Code Along : Join Tables
-
-You're all familiar with LinkedIn -
-let's imagine how a skill endorsement system like LinkedIn's might work.
-
-First, let's create a `skills` table
-and fill it with data from `data/skills.csv`.
-
-Then we'll create an `endorsements` table to connect `skills`
-to the existing `people` table.
-
-Next we'll insert a few `endorsements` connecting `people` to `skills`.
-
-Lastly, we'll build and run some queries using the `endorsements` join table.
-
-### Lab : Join Tables
-
-Create a `companies` table and fill it with data from `data/companies.csv`.
-Then make a `jobs` table to connect `companies` to the existing `people` table;
- the `jobs` table should contain `start_date` and `end_date` columns
- in addition to linking People to Companies.
-
-Next insert some new `jobs` connecting `people` to `companies`.
-
--   Give at least two people non-overlapping jobs at more than one company.
--   Have at least two companies employ at least four people.
-
-Lastly, run some queries using the `jobs` join table:
-
--   For at least one company find all the people who currently work there.
-
--   For at least one person find all of the companies they've worked for
- and order the result by start date.
+Source code distributed under the MIT license. Text and other assets copyright
+General Assembly, Inc., all rights reserved.
