@@ -31,14 +31,14 @@ particular ingredient in a single recipe.
 
 -   In our library, how do we connect `borrowers` to `books`.
 -   How should clinic administrators record appointments?
--   And what does our cookbook need that includes ingredients?
+-   What does our cookbook need to include ingredients in recipes?
 
 Let's model these new entities (objects) and their relationships to our
 existing entities (objects).
 
 ## Creating many-to-many relationships between entities
 
-In an RDBMs, we do this using oin tables
+In an RDBMs, we do this using join tables
 
 ### Demonstration: Create tables for borrowers and loans
 

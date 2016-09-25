@@ -43,13 +43,13 @@ with each row linking one person to one event.
 
 **people_events**
 
-| id | people_id | event_id |
+| id | person_id | event_id |
 |:--:|:---------:|:--------:|
 |  1 |         5 |       4  |
-|  1 |         7 |       4  |
-|  1 |         9 |       4  |
-|  1 |         5 |       4  |
-|  1 |         5 |       4  |
+|  2 |         7 |       4  |
+|  3 |         9 |       4  |
+|  4 |         5 |       4  |
+|  5 |         5 |       4  |
 
 It's usually helpful to model these joins
  as their own entities, where possible,
@@ -59,13 +59,13 @@ In doing so, you will also commonly find yourself adding additional columns
 
 **attendances**
 
-| id | people_id | event_id | other_data |
+| id | person_id | event_id | other_data |
 |:--:|:---------:|:--------:|:----------:|
 |  1 |         5 |       4  |    ...     |
-|  1 |         7 |       4  |    ...     |
-|  1 |         9 |       4  |    ...     |
-|  1 |         5 |       4  |    ...     |
-|  1 |         5 |       4  |    ...     |
+|  2 |         7 |       4  |    ...     |
+|  3 |         9 |       4  |    ...     |
+|  4 |         5 |       4  |    ...     |
+|  5 |         5 |       4  |    ...     |
 
 ## Setup
 
@@ -115,10 +115,10 @@ this time, though, with two columns of foreign keys.
 | id | people_id | city_id |  no | street |
 |:--:|:---------:|:-------:|:---:|:------:|
 |  1 |         5 |      4  | 440 | 10th   |
-|  1 |         7 |      2  | 991 | 11th   |
-|  1 |         9 |      2  | 406 | 12th   |
-|  1 |         5 |      7  | 143 | 13th   |
-|  1 |         5 |      7  | 647 | 1st    |
+|  2 |         7 |      2  | 991 | 11th   |
+|  3 |         9 |      2  | 406 | 12th   |
+|  4 |         5 |      7  | 143 | 13th   |
+|  5 |         5 |      7  | 647 | 1st    |
 
 New records can be inserted directly into the `addresses` table,
  linking together People and Cities.
