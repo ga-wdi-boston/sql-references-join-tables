@@ -18,7 +18,7 @@ By the end of this, developers should be able to:
 ## Preparation
 
 1.  [Fork and clone](https://github.com/ga-wdi-boston/meta/wiki/ForkAndClone)
- this repository.
+    this repository.
 1.  Create a new branch, `training`, for your work.
 1.  Install dependencies if necessary.
 
@@ -80,30 +80,31 @@ recipes.
 
 ## Additional Resources
 
--   [Constraints](http://www.postgresql.org/docs/9.4/static/ddl-constraints.html) -
+-   [Constraints](http://www.postgresql.org/docs/9.5/static/ddl-constraints.html) -
  An overview of the variety of constraints that PostgreSQL provides.
--   [CREATE TABLE](http://www.postgresql.org/docs/9.4/static/sql-createtable.html) -
+-   [CREATE TABLE](http://www.postgresql.org/docs/9.5/static/sql-createtable.html) -
  detailed documentation of PostgreSQL's version of
  the SQL `CREATE TABLE` command.
--   [ALTER TABLE](http://www.postgresql.org/docs/9.4/static/sql-altertable.html) -
+-   [ALTER TABLE](http://www.postgresql.org/docs/9.5/static/sql-altertable.html) -
  detailed documentation of PostgreSQL's version of the
  SQL `ALTER TABLE` command.
--   [Index Introduction](http://www.postgresql.org/docs/9.4/static/indexes-intro.html) -
+-   [Index Introduction](http://www.postgresql.org/docs/9.5/static/indexes-intro.html) -
  The introductory section of the chapter on indexes in PostgreSQL.
--   [CREATE INDEX](http://www.postgresql.org/docs/9.4/static/sql-createindex.html) -
+-   [CREATE INDEX](http://www.postgresql.org/docs/9.5/static/sql-createindex.html) -
  detailed documentation of PostgreSQL's version of the
   SQL `CREATE INDEX` command.
--   [UPDATE](http://www.postgresql.org/docs/9.4/static/sql-update.html) -
+-   [UPDATE](http://www.postgresql.org/docs/9.5/static/sql-update.html) -
  detailed documentation of PostgreSQL's version of the SQL `UPDATE` command.
--   [INSERT](http://www.postgresql.org/docs/9.4/static/sql-insert.html) -
+-   [INSERT](http://www.postgresql.org/docs/9.5/static/sql-insert.html) -
  detailed documentation of PostgreSQL's version of the
   SQL `INSERT INTO` command.
--   [Joins Between Tables](http://www.postgresql.org/docs/9.4/static/tutorial-join.html) -
+-   [Joins Between Tables](http://www.postgresql.org/docs/9.5/static/tutorial-join.html) -
  An introduction to querying multiple tables
--   [SELECT](http://www.postgresql.org/docs/9.4/static/sql-select.html) -
+-   [SELECT](http://www.postgresql.org/docs/9.5/static/sql-select.html) -
  detailed documentation of PostgreSQL's version of the SQL `SELECT` command.
 
 ## [License](LICENSE)
 
-Source code distributed under the MIT license. Text and other assets copyright
-General Assembly, Inc., all rights reserved.
+1.  All content is licensed under a CC­BY­NC­SA 4.0 license.
+1.  All software code is licensed under GNU GPLv3. For commercial use or
+    alternative licensing, please contact legal@ga.co.
