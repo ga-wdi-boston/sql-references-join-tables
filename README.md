@@ -53,7 +53,7 @@ Then we'll create a `loans` table and populate it using `INSERT` statements.
 We'll create scripts in `scripts/clinic` to add an `appointments` table and
 populate it using `INSERT` statements.
 
-### Lab: Create and populate a recipes table
+### Lab: Create and populate a recipe_ingredients table
 
 We'll create scripts in `scripts/cookbook` to add a `recipe_ingredients` table
 and populate it using `INSERT` statements.  Then we'll remove `recipe_id` from
