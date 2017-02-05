@@ -1,1 +1,1 @@
-\copy doctors(specialty,surname,given_name,gender) FROM 'data/doctors.csv' WITH (FORMAT csv, HEADER true)
+\copy doctors(specialty,family_name,given_name,gender) FROM 'data/doctors.csv' WITH (FORMAT csv, HEADER true)
