@@ -1,7 +1,7 @@
 CREATE TABLE doctors(
   id SERIAL PRIMARY KEY,
   specialty TEXT,
-  surname TEXT,
+  family_name TEXT,
   given_name TEXT,
   gender TEXT
 );

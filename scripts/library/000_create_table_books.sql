@@ -3,5 +3,6 @@ CREATE TABLE books (
   id SERIAL PRIMARY KEY,
   title TEXT,
   author TEXT,
-  published_on DATE
+  original_language TEXT,
+  first_published INTEGER
 );
